@@ -3,37 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles-about.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" sizes="180x180" href="./image/logo.jpeg">
+    <title>MyFarmAccelerator | Empowering Farmers & Food Security in Nigeria</title>
+    <meta name="title" content="MyFarmAccelerator | Empowering Farmers & Food Security in Nigeria">
+    <meta name="description" content="MyFarmAccelerator connects smallholder farmers in Akure, Ondo State, to technology, financing, and premium markets to boost productivity and profit.">
+    <meta name="keywords" content="agriculture Nigeria, farm accelerator Akure, AgTech Nigeria, farming grants Nigeria, agricultural advisory Ondo State, food security Africa, market linkage for farmers">
+    <meta name="author" content="MyFarmAccelerator">
+    <meta name="robots" content="index, follow">
+
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.myfarmaccelerator.com/">
+    <meta property="og:title" content="MyFarmAccelerator | Bridging the Gap for African Farmers">
+    <meta property="og:description" content="Connecting farmers to seeds, financing, and markets. Join our network to scale your agricultural impact.">
+    <meta property="og:image" content="image/logo.jpeg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.myfarmaccelerator.com/">
+    <meta property="twitter:title" content="MyFarmAccelerator | Empowering Farmers">
+    <meta property="twitter:description" content="Simplifying the farming journey from planting to profit in Nigeria.">
+    <meta property="twitter:image" content="image/logo.jpeg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "MyFarmAccelerator",
+      "image": "https://www.myfarmaccelerator.com/image/logo.jpeg",
+      "url": "https://www.myfarmaccelerator.com",
+      "telephone": "+2347036518852",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Akure Town",
+        "addressLocality": "Akure",
+        "addressRegion": "Ondo State",
+        "addressCountry": "NG"
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./contact-service.css">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="navbar" id="navbar">
-                <div class="logo"><img src="./images/logo.png" alt="" /></div>
-                <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
-                <div class="nav-menu" id="navMenu">
-                    <ul>
-                        <li><a href="./index.html">Home</a></li>
-                        <li><a href="./about.html">About Us</a></li>
-                        <li><a href="./services.html">Features</a></li>
-                        <li><a href="./contact.html" class="active">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="banner">
-                <h1>Smart HealthCare, Simplified</h1>
-                <p>Discover the powerful feature that makes novabuk the leading digital health platform for Africa</p>
-            </div>
-        </header>
+
+        <div class="top-bar">
+        <div class="top-bar-left">
+            <span><i class="fas fa-map-marker-alt"></i> Ondo State, Nigeria</span>
+            <span><i class="far fa-envelope"></i> </span>
+            <span><i class="fas fa-phone-alt"></i> +234 703 651 8852</span>
+        </div>
+        <div class="top-bar-right">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-times"></i></a> </div>
     </div>
 
+    <header class="main-header">
+        <div class="logo-area">
+            <!-- <div class="grid-icon"><i class="fas fa-th"></i></div> -->
+            <img src="image/logo.jpeg" alt="Agri Innovation Hub Logo" class="logo-img">
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="floating-nav-container" id="stickyNav">
+            <nav>
+                <a href="./index.html" class="active">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./services.html">Services</a>
+                <a href="./contact.html">Contact</a>
+            </nav>
+        </div>
+        
+        <div class="mobile-nav-menu" id="mobileMenu">
+
+        </div>
+
+        <div class="header-cta">
+            <a href="#" class="btn btn-dark-green">Join the Network <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </header>
+ 
     <main>
         <section class="about-section">
             <div class="about-form">
@@ -46,7 +106,7 @@
                     <input type="email" id="email" name="email" placeholder="youremail@example.com" required>
 
                     <label for="organisation">Organisation:</label>
-                    <input type="text" id="organisation" name="organisation" placeholder="Your Organisation or Clinic" required>
+                    <input type="text" id="organisation" name="organisation" placeholder="Your Organisation Name" required>
 
                     <label for="message">Message:</label>
                     <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
@@ -62,21 +122,21 @@
                         <i class="fas fa-envelope"></i>
                         <div class="social-info">
                             <h5>Email</h5>
-                            <p>hello@novabuk.com</p>
+                            <p>info@myfarmaccelerator.com</p>
                         </div>
                     </div>
                     <div class="social-container">
                         <i class="fas fa-phone"></i>
                         <div class="social-info">
                             <h5>Phone</h5>
-                            <p>+234 813 468 4154</p>
+                            <p>+234 (XXX) XXX XXXX</p>
                         </div>
                     </div>
                     <div class="social-container">
                         <i class="fas fa-globe"></i>
                         <div class="social-info">
                             <h5>Website</h5>
-                            <p>www.novabuk.com</p>
+                            <p>www.myfarmaccelerator.com</p>
                         </div>
                     </div>
                 </div>
@@ -88,10 +148,10 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>  
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                    <p>@NovaBukOfficial</p>
+                    <p>@myfarmaccelerator</p>
                 </div>
-                <h3>Ready to get Started?</h3>
-                <p>Join our pilot program and be among to experience the future of digital healthcare in Africa</p>
+                <h3>Join our Growth</h3>
+                <p>We welcome collaborations with organizations committed to scaling agricultural impact and empowering the African farmer</p>
 
                 <div class="talk-session">
                     <a href="">Talk With Us</a>
@@ -99,45 +159,52 @@
             </div>
         </section>
     </main>
-    <footer class="main-footer">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo-foot">
-                        <img src="./images/logo.png" alt="Logo" />
-                    </div>
-                    <p>Where Technology meets Care. Empowering Africa's Healthcare with AI-driven Digital Records.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="./about.html">About us</a></li>
-                        <li><a href="./services.html">Features</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul class="contact-list">
-                        <li><i class="fa-solid fa-phone"></i> +234 813 468 4154</li>
-                        <li><i class="fa-solid fa-envelope"></i> hello@novabuk.com</li>
-                        <li><i class="fa-solid fa-globe"></i> www.novabuk.com</li>
-                    </ul>
+   <footer id="contact">
+        <div class="footer-main">
+            <div class="footer-col footer-about">
+                <!-- <div class="logo-img" style="color: white;align-items: center;"><img src="./image/logo.jpeg" width="100%" alt=""></div> -->
+                <h4>About MyFarmAccelerator</h4>
+                <p>MyFarmAccelerator connects farmers, agribusinesses, and partners through innovative technology.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <div class="line"></div>
-                <p><i class="fa-regular fa-copyright"></i> 2025 NovaBuk HealthTech. All rights reserved.</p>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./services.html">Our Programs</a></li>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <!-- <li><a href="#">Careers</a></li> -->
+                </ul>
             </div>
+            <div class="footer-col">
+                <h4>Partner With Us</h4>
+                <!-- <p>We welcome collaborations with:</p> -->
+                <ul>
+                    <li><a href="#">Financial Institutions & Investors</a></li>
+                    <li><a href="#">Government Agencies</a></li>
+                    <li><a href="#">NGOs & Agricultural Development Partners</a></li>
+                    <li><a href="#">Agribusinesses & Processors</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: gold;"></i> Akure Town, Ondo State</li>
+                    <li><i class="fas fa-phone-alt" style="margin-right: 10px; color: gold;"></i> +234 9037 520-872</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: gold;"></i> info@MyFarmAccelerator.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyFarmAccelerator. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+        </div>
     </footer>
-
-    <script src="./script.js"></script>
-</body>        
-        
+<script src="./script.js"></script>
+</body>
+</html>    

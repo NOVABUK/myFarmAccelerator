@@ -1,122 +1,197 @@
-// Select all nav links
-const navLinks = document.querySelectorAll('.nav-menu ul li a');
-// Select the navigation toggle button and its icon
-const navToggleBtn = document.getElementById('navToggle');
-const navToggleIcon = navToggleBtn ? navToggleBtn.querySelector('i') : null;
+// 1. Select the element we want to make sticky
+const navbarContainer = document.getElementById("stickyNav");
 
-// Get current page path
-const currentPath = window.location.pathname;
+// 2. Calculate the point at which it should become sticky.
+// We get its initial distance from the top of the page.
+// We subtract a small buffer (e.g., 30px) so it triggers just before it hits the top edge.
+const stickyPoint = navbarContainer.offsetTop - 30;
 
-// Loop through links and set active class (Navigation Highlight)
-navLinks.forEach(link => {
-    // Check for both relative and absolute paths
-    if(link.getAttribute('href') === currentPath || link.getAttribute('href') === '.' + currentPath) {
-        link.classList.add('active');
-    }
-});
-
-// Select all hero buttons
-const heroButtons = document.querySelectorAll('.button a');
-
-// Hero Button Active Class Toggle
-heroButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-        // e.preventDefault(); // Uncomment if you don't want the links to navigate
-        // Remove active from all buttons
-        heroButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active to clicked button
-        this.classList.add('active');
-    });
-});
-
-/**
- * Toggles the mobile navigation menu open/closed state
- * and switches the hamburger icon to a close icon.
- */
-function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-
-    if (!menu || !navToggleBtn || !navToggleIcon) return;
-
-    // 1. Toggle the 'open' class for CSS-driven visibility
-    menu.classList.toggle('open');
-    const isMenuOpen = menu.classList.contains('open');
-
-    // 2. Switch the icon: fa-bars (closed) <-> fa-times or fa-xmark (open)
-    if (isMenuOpen) {
-        // Switch to the close icon
-        // Using 'fa-xmark' as it is the current standard in Font Awesome 6
-        navToggleIcon.classList.remove('fa-bars');
-        navToggleIcon.classList.add('fa-xmark');
-        navToggleBtn.setAttribute('aria-expanded', 'true');
-    } else {
-        // Switch back to the hamburger icon
-        navToggleIcon.classList.remove('fa-xmark');
-        navToggleIcon.classList.add('fa-bars');
-        navToggleBtn.setAttribute('aria-expanded', 'false');
-    }
-
-    // 3. Robustness check for smaller screens (less than 1024px, based on your CSS)
-    if (window.innerWidth <= 1023) {
-        menu.style.display = isMenuOpen ? 'block' : 'none';
-    } else {
-        // remove inline style on larger screens so desktop CSS remains authoritative
-        menu.style.display = '';
-    }
-
-    console.log('toggleMenu executed — open:', isMenuOpen);
+// 3. Define the scroll function
+function handleScroll() {
+  // Check current scroll position of the window
+  if (window.pageYOffset >= stickyPoint) {
+    // If we scrolled past the point, add the sticky class
+    navbarContainer.classList.add("sticky-mode");
+  } else {
+    // If we are back at the top, remove the sticky class
+    navbarContainer.classList.remove("sticky-mode");
+  }
 }
 
-// Wire up hamburger toggle click event
-if (navToggleBtn) {
-    navToggleBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleMenu();
-        this.classList.toggle('open');
-    });
-}
+// 4. Attach the function to the window scroll event
+window.onscroll = function() {
+    handleScroll();
+};
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Sticky Navigation Functionality
+    const stickyNav = document.getElementById('stickyNav');
+    const header = document.querySelector('.main-header');
+    
+    // Get the bottom position of the header to determine when to stick the nav
+    const stickyPoint = header.offsetHeight + 50; 
 
-// Close mobile menu when a nav link is clicked (for smoother mobile navigation)
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        const menu = document.getElementById('navMenu');
-        const toggle = document.getElementById('navToggle');
-        if (menu && menu.classList.contains('open')) {
-            // Only call toggleMenu if the menu is open to close it
-            toggleMenu(); 
+    function handleScroll() {
+        if (window.scrollY > stickyPoint) {
+            stickyNav.classList.add('sticky-mode');
+        } else {
+            stickyNav.classList.remove('sticky-mode');
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); 
+
+
+    // 2. Mobile Menu Toggle Functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const toggleIcon = menuToggle.querySelector('i');
+    
+    // Function to populate mobile menu from desktop nav
+    function populateMobileMenu() {
+        const desktopLinks = document.querySelectorAll('#stickyNav nav a');
+        mobileMenu.innerHTML = ''; // Clear existing content
+        desktopLinks.forEach(link => {
+            const clone = link.cloneNode(true);
+            mobileMenu.appendChild(clone);
+        });
+        
+        // Add the CTA button to the bottom of the mobile menu
+        const ctaButton = document.querySelector('.header-cta a').cloneNode(true);
+        const ctaWrapper = document.createElement('div');
+        ctaWrapper.style.padding = '15px 20px';
+        ctaWrapper.appendChild(ctaButton);
+        mobileMenu.appendChild(ctaWrapper);
+    }
+
+    populateMobileMenu(); // Populate on load
+
+    menuToggle.addEventListener('click', () => {
+        const isActive = mobileMenu.classList.toggle('active');
+        
+        // Change the icon from bars to close (X)
+        if (isActive) {
+            toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-times');
+        } else {
+            toggleIcon.classList.remove('fa-times');
+            toggleIcon.classList.add('fa-bars');
         }
     });
+
+
+    // 3. Scroll Reveal Animation Functionality
+    const revealElements = document.querySelectorAll('.reveal-element');
+
+    const observerOptions = {
+        root: null, 
+        rootMargin: '0px',
+        threshold: 0.1 
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
 });
-    
-    const mvpToggle = document.getElementById('mvp-toggle');
-    const aiToggle = document.getElementById('ai-toggle');
-    const mvpContent = document.getElementById('mvp-content');
-    const aiContent = document.getElementById('ai-content');
 
-    // Function to handle the state change
-    function setActive(selectedToggle, unselectedToggle, selectedContent, unselectedContent) {
-        // 1. Toggle the 'active' class on the buttons
-        selectedToggle.classList.add('active');
-        unselectedToggle.classList.remove('active');
+const revealItems = document.querySelectorAll('.slide-left, .slide-right');
 
-        // 2. Toggle the 'active-content' class on the content panels
-        selectedContent.classList.add('active-content');
-        unselectedContent.classList.remove('active-content');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
     }
+  });
+}, { threshold: 0.2 });
 
-    // Add event listeners to each button
-    mvpToggle.addEventListener('click', () => {
-        setActive(mvpToggle, aiToggle, mvpContent, aiContent);
-    });
+revealItems.forEach(item => observer.observe(item));
 
-    aiToggle.addEventListener('click', () => {
-        setActive(aiToggle, mvpToggle, aiContent, mvpContent);
-    });
+// 1. Intersection Observer Logic for Scroll-In Animation
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // trigger when 10% of the element is visible
+        };
 
-    // const Message = document.getElementById('message');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Element is in view, make it visible
+                    entry.target.classList.add('is-visible');
+                    // Stop observing once visible to prevent re-triggering
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
 
-    // Message.addEventListener('input', (e) => {
-    //     e.preventDefault();
-    //         console.log('You are typing...');
+        // Select all elements that should reveal
+        const revealElements = document.querySelectorAll('.reveal-element');
         
-    // });
+        // Observe each element
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+
+
+        // 2. Mobile menu toggle logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenu = document.getElementById('desktop-menu');
+
+        // Populate mobile menu content initially
+        // Replaces Tailwind-like classes with standard CSS properties for flexbox and spacing.
+        const linksHtml = Array.from(desktopMenu.children).map(link => 
+            `<a href="${link.getAttribute('href')}" style="display: block; padding: 0.75rem 1rem; margin: 0 1rem; border-radius: 0.5rem; font-family: 'Poppins', sans-serif; font-weight: 600; color: #4b5563; text-decoration: none;">${link.textContent}</a>`
+        ).join('');
+        
+        mobileMenu.innerHTML = `<div style="display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 0;">${linksHtml}</div>`;
+        
+        const allLinks = mobileMenu.querySelectorAll('a');
+        allLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMobileMenu(true); // Pass true to force close
+            });
+        });
+
+
+        function toggleMobileMenu(forceClose = false) {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            
+            if (!isExpanded || forceClose) {
+                mobileMenu.classList.add('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileMenu.classList.remove('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        mobileMenuButton.addEventListener('click', () => toggleMobileMenu(false));
+    });
+
+
+        
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll('.pop');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elements.forEach(el => observer.observe(el));
+});

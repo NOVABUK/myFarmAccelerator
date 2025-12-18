@@ -1,0 +1,6 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Tell search engines where the map is
+Sitemap: https://www.myfarmaccelerator.com/sitemap.xml
