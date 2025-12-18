@@ -813,7 +813,9 @@ footer li{
 /* --- Mobile (Max Width 600px) --- */
 @media (max-width: 600px) {
 
-    
+    body{
+        overflow-x: hidden;
+    }
     /* Top Bar */
     .top-bar {
         flex-direction: row;
