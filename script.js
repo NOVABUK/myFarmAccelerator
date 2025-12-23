@@ -68,24 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuToggle.addEventListener('click', () => {
         const isActive = mobileMenu.classList.toggle('active');
-        // Change the icon from bars to close (X) and lock body scroll
+        
+        // Change the icon from bars to close (X)
         if (isActive) {
             toggleIcon.classList.remove('fa-bars');
             toggleIcon.classList.add('fa-times');
-            document.body.classList.add('no-scroll');
         } else {
-            toggleIcon.classList.remove('fa-times');
-            toggleIcon.classList.add('fa-bars');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-
-    // Close menu when a link inside it is clicked and restore scrolling
-    mobileMenu.addEventListener('click', (e) => {
-        const t = e.target;
-        if (t && t.tagName === 'A') {
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
             toggleIcon.classList.remove('fa-times');
             toggleIcon.classList.add('fa-bars');
         }
