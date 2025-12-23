@@ -1101,7 +1101,7 @@ footer li{
 }
 @media (max-width: 992px)  {
     .main-header {
-        width: 100%;
+        /* width: 100%; */
         position: sticky;
         top: 0px;
         padding: 50px 15px 20px 10px;
@@ -1121,13 +1121,13 @@ footer li{
         z-index: 999;
     }
     .top-bar{
-        width: 100%;
+        /* width: 100%; */
         padding: 10px 15px 10px 15px;
     }
 }
 @media (max-width: 435px){
     .main-header {
-        width: 100%;
+        /* width: 100%; */
         position: sticky;
         /* top: 0px; */
         padding: 30px 5px 20px 10px;
