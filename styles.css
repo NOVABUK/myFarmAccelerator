@@ -1,7 +1,7 @@
 *{
-    margin :0;
+    margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 :root {
@@ -9,12 +9,72 @@
     --light-text: #666;
     --bg-off-white: #f8fbf9;
 }
-
+html {
+  overflow-x: hidden !important;
+}
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-off-white);
     overflow-x: hidden;
+}
+
+/* Prevent page scroll when mobile menu is open (JS toggles `no-scroll` on body) */
+.no-scroll {
+    height: 100vh;
+    overflow: hidden !important;
+    touch-action: none;
+}
+
+/* Mobile header/top-bar overflow fixes */
+@media (max-width: 768px) {
+    .top-bar, .main-header {
+        width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+
+    .top-bar {
+        padding: 8px 4%;
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .top-bar-left, .top-bar-right {
+        min-width: 0; /* allow children to shrink */
+    }
+
+    .top-bar-left span {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 65%;
+        vertical-align: middle;
+    }
+
+    .logo-img { max-width: 120px; margin-top: 0; }
+
+    .floating-nav-container { display: none !important; }
+    .menu-toggle { display: block; }
+
+    /* Make mobile menu a full-screen overlay to avoid pushing content */
+    .mobile-nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        z-index: 2000;
+        padding-top: 70px; /* leave room for header */
+        display: none;
+        overflow-y: auto;
+    }
+    .mobile-nav-menu.active { display: block; }
 }
 
 .reveal-element {
@@ -1101,7 +1161,7 @@ footer li{
 }
 @media (max-width: 992px)  {
     .main-header {
-        /* width: 100%; */
+        width: 100%;
         position: sticky;
         top: 0px;
         padding: 50px 15px 20px 10px;
